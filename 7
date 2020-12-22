@@ -1,0 +1,36 @@
+#贪心法解决背包问题
+num = int(input("请输入物品的件数："))
+bag = int(input("请输入背包的最大承重量："))
+weights = []
+values = []
+res = []
+for i in range(0,num):
+    str = "请输入第{}件物品的重量".format(i+1)
+    weight = int(input(str))
+    weights.append(weight)
+for i in range(0,num):
+    str = "请输入第{}件物品的价值".format(i+1)
+    value = int(input(str))
+    values.append(value)
+a = []
+for i in range(0,num):
+    a.append(values[i]/weights[i])
+value = 0
+while bag > 0:
+    ind = a.index(max(a))
+    if bag > weights[ind]:
+        value += values[ind]
+        bag -= weights[ind]
+        res.append(ind)
+        a[ind] = 0
+    elif bag <= weights[ind]:
+        w = bag/weights[ind]
+        value += bag*a[ind]
+        res.append(ind)
+        bag = 0
+        a[ind] = 0
+print("取出物品总价值为{}".format(value))
+print("依次取出的物品为:")
+for res in res:
+    print("第{}件".format(res+1))
+print("最后一件物品的比例是{}".format(w))
