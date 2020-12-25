@@ -1,0 +1,20 @@
+LeetCode 75.颜色分类
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        left = 0
+        right = len(nums)-1
+        i=0
+        while i<right+1:
+            if  nums[i] == 0:
+                nums[i] = nums[left]
+                nums[left] = 0
+                left+=1
+            elif nums[i] == 2:
+                nums[i] = nums[right]
+                i-=1
+                nums[right] = 2
+                right-=1
+            i+=1
