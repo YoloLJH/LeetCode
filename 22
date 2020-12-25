@@ -1,0 +1,7 @@
+#LeetCode 807.保持城市天际线
+class Solution:
+    def maxIncreaseKeepingSkyline(self, grid: List[List[int]]) -> int:
+        n = len(grid)
+        SkyLineRow = [max([grid[i][j] for j in range(n)]) for i in range(n)]
+        skyLineCol = [max([grid[i][j] for i in range(n)]) for j in range(n)]
+        return sum([min([SkyLineRow[i],skyLineCol[j]]) - grid[i][j] for i in range(n) for j in range(n)])
