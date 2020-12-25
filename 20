@@ -1,0 +1,14 @@
+#LeetCode 338.比特位计数
+class Solution:
+    def countBits(self, num: int) -> List[int]:
+        def bin_count(n):
+            count=0
+            while n:
+                n&=n-1
+                count+=1
+            return count
+
+        res=[]
+        for i in range(num+1):
+            res.append(bin_count(i))
+        return res
