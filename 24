@@ -1,0 +1,30 @@
+#LeetCode 535TinyURL
+import random
+import string
+
+class Codec:
+    def __init__(self):
+        self.url_dics={}
+
+    def getKey(self):
+        return ''.join(random.sample(string.ascii_letters+string.digits,6))
+
+    def encode(self, longUrl: str) -> str:
+        """Encodes a URL to a shortened URL.
+        """
+        rk = self.getKey()
+        while rk in self.url_dics:
+            rk = self.getKey()
+        self.url_dics[rk]=longUrl
+        return 'http://tinyurl.com/'+rk
+        
+
+    def decode(self, shortUrl: str) -> str:
+        """Decodes a shortened URL to its original URL.
+        """
+        return self.url_dics[shortUrl.replace('http://tinyurl.com/','')]
+        
+
+# Your Codec object will be instantiated and called as such:
+# codec = Codec()
+# codec.decode(codec.encode(url))
