@@ -1,0 +1,8 @@
+#LeetCode1689十-二进制数的最少数目
+class Solution:
+    def minPartitions(self, n: str) -> int:
+        res = 0
+        for i in n:
+            res = max(res,int(i))
+        return res
+© 2020 GitHub, Inc.
