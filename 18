@@ -1,0 +1,27 @@
+#LeetCode 1038.把二叉搜索树转换为累加树
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def bstToGst(self, root: TreeNode) -> TreeNode:
+        if not root:
+            return 
+
+        self.sum = 0
+        def help(root):
+            if not root:
+                return 
+            help(root.right)
+            root.val = root.val+self.sum
+            self.sum = root.val
+            help(root.left)
+            
+
+        help(root)
+        return root
+  
