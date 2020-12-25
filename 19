@@ -1,0 +1,6 @@
+#LeetCode 1641.统计字典元音字符串的数字
+class Solution:
+    def countVowelStrings(self, n: int) -> int:
+        return len(list(itertools.combinations_with_replacement("aeiou",n)))
+
+© 2020 GitHub, Inc.
